@@ -19,7 +19,7 @@ export default new Router({
       component: engineeringList
     },
     {
-      path: '/engineering/detail',
+      path: '/engineering/detail/:id',
       name: 'engineeringDetail',
       component: engineeringDetail
     }

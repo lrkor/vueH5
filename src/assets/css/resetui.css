@@ -1,0 +1,7 @@
+/*工程圈列表vant样式修改/*/
+.list .van-tab{
+  color: #000!important;
+}
+.list .van-tab--active{
+  color: #3396fb!important;
+}
