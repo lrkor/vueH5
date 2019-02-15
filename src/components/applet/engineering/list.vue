@@ -1,11 +1,9 @@
 <template>
   <div class="list">
     <van-tabs v-model="active"
-              :class="active"
               color="#3396fb"
+              :line-width="75"
               @change="navClick"
-              animated
-              swipeable
               sticky>
       <van-tab v-for="item in navList" :title="item.name" :key="item.id">
         <div class="list_content">
@@ -18,61 +16,68 @@
             :immediate-check="immediate"
             :offset="20"
             @load="onLoad">
-            <div v-for="(item, index) in listContent" :key="index" @click="goDetail(item.id)">
-              <div class="border_bottom" v-if="item.imageList==null || item.imageList.length==0">
-                <van-row type="flex">
-                  <van-col class="title">
-                    <span v-if="item.isTop==1" class="to-top">置顶</span>
-                    <span v-if="item.isTop==1" class="to-top1"></span>
-                    {{item.title}}
-                  </van-col>
-                </van-row>
-                <van-row type="flex" class="content_bottom">
-                  <van-col>{{item.categoryName}}</van-col>
-                  <van-col style="margin-left: 10px">浏览{{item.visitTimes}}</van-col>
-                  <van-col style="margin-left: 10px">{{ item.createTime | formatDate }}<span style="color: #fff">是</span></van-col>
-                </van-row>
+            <div class="list_item" v-for="(item, index) in listContent" :key="index" @click="goDetail(item.id)">
+              <div class="pd-15" v-if="item.imageList==null || item.imageList.length==0">
+                <div class="list_item_c">
+                  <van-row type="flex">
+                    <van-col class="title">
+                      <span v-if="item.isTop==1" class="to-top">置顶</span>
+                      <span v-if="item.isTop==1" class="to-top1"></span>
+                      {{item.title}}
+                    </van-col>
+                  </van-row>
+                  <van-row type="flex" class="content_bottom">
+                    <van-col>{{item.categoryName}}</van-col>
+                    <van-col style="margin-left: 10px">浏览{{item.visitTimes}}</van-col>
+                    <van-col style="margin-left: 10px">{{ item.createTime | formatDate }}<span
+                      style="opacity: 0">是</span></van-col>
+                  </van-row>
+                </div>
               </div>
-              <div class="border_bottom" v-else-if="item.imageList.length>2">
-                <van-row type="flex">
-                  <van-col class="title">
-                    <span v-if="item.isTop==1" class="to-top">置顶</span>
-                    <span v-if="item.isTop==1" class="to-top1"></span>
-                    {{item.title}}
-                  </van-col>
-                </van-row>
-                <van-row type="flex" justify="space-around" style="font-size: 0.7rem;margin-top: 1rem">
-                  <van-col><img class="img" :src="item.imageList[0]" alt=""></van-col>
-                  <van-col style="margin: 0 0.9rem"><img class="img" :src="item.imageList[1]" alt=""></van-col>
-                  <van-col><img class="img" :src="item.imageList[2]" alt=""></van-col>
-                </van-row>
-                <van-row type="flex" class="content_bottom">
-                  <van-col>{{item.categoryName}}</van-col>
-                  <van-col style="margin-left: 10px">浏览{{item.visitTimes}}</van-col>
-                  <van-col style="margin-left: 10px">{{ item.createTime | formatDate }}<span style="color: #fff">是</span></van-col>
-                </van-row>
-
+              <div class="pd-15" v-else-if="item.imageList.length>2">
+                <div class="list_item_c">
+                  <van-row type="flex">
+                    <van-col class="title">
+                      <span v-if="item.isTop==1" class="to-top">置顶</span>
+                      <span v-if="item.isTop==1" class="to-top1"></span>
+                      {{item.title}}
+                    </van-col>
+                  </van-row>
+                  <van-row type="flex" justify="space-around" style="font-size: 0.7rem;margin-top: 1rem">
+                    <van-col><img class="img" :src="item.imageList[0]" alt=""></van-col>
+                    <van-col style="margin: 0 0.015rem"><img class="img" :src="item.imageList[1]" alt=""></van-col>
+                    <van-col><img class="img" :src="item.imageList[2]" alt=""></van-col>
+                  </van-row>
+                  <van-row type="flex" class="content_bottom">
+                    <van-col>{{item.categoryName}}</van-col>
+                    <van-col style="margin-left: 10px">浏览{{item.visitTimes}}</van-col>
+                    <van-col style="margin-left: 10px">{{ item.createTime | formatDate }}<span
+                      style="opacity: 0">是</span></van-col>
+                  </van-row>
+                </div>
               </div>
-              <div class="border_bottom" v-else>
-                <van-row type="flex" justify="space-around" style="font-size: 14px;">
-                  <van-col span="16">
-                    <van-row type="flex">
-                      <van-col class="title">
-                        <span v-if="item.isTop==1" class="to-top">置顶</span>
-                        <span v-if="item.isTop==1" class="to-top1"></span>
-                        {{item.title}}
-                      </van-col>
-                    </van-row>
-                    <van-row type="flex" class="content_bottom">
-                      <van-col>{{item.categoryName}}</van-col>
-                      <van-col style="margin-left: 10px">浏览{{item.visitTimes}}</van-col>
-                      <van-col style="margin-left: 10px">{{ item.createTime | formatDate }}<span style="color: #fff">是</span></van-col>
-                    </van-row>
-                  </van-col>
-                  <van-col span="8" style="text-align: right"><img class="img" :src="item.imageList[0]" alt="">
-                  </van-col>
-                </van-row>
-
+              <div class="pd-15" v-else>
+                <div class="list_item_c">
+                  <van-row type="flex" justify="space-around" style="font-size: 14px;">
+                    <van-col span="16">
+                      <van-row type="flex">
+                        <van-col class="title">
+                          <span v-if="item.isTop==1" class="to-top">置顶</span>
+                          <span v-if="item.isTop==1" class="to-top1"></span>
+                          {{item.title}}
+                        </van-col>
+                      </van-row>
+                      <van-row type="flex" class="content_bottom">
+                        <van-col>{{item.categoryName}}</van-col>
+                        <van-col style="margin-left: 10px">浏览{{item.visitTimes}}</van-col>
+                        <van-col style="margin-left: 10px">{{ item.createTime | formatDate }}<span
+                          style="opacity: 0">是</span></van-col>
+                      </van-row>
+                    </van-col>
+                    <van-col span="8" style="text-align: right"><img class="img" :src="item.imageList[0]" alt="">
+                    </van-col>
+                  </van-row>
+                </div>
               </div>
             </div>
           </van-list>
@@ -91,7 +96,7 @@
     name: "list",
     data() {
       return {
-        active: '1',
+        active: '0',
         navList: [
           {
             id: '1',
@@ -105,7 +110,7 @@
         immediate: false,
         page: 1,
         size: 10,
-        id: ''
+        id: '1'
       }
     },
     filters: {
@@ -132,7 +137,6 @@
         this.loading = false;
         this.immediate = false;
         this.listContent = [];
-        console.log(1111);
         this.queryList(id);
       },
 
@@ -195,7 +199,7 @@
       },
 
       //进入详情
-      goDetail(id){
+      goDetail(id) {
         this.$router.push({
           path: `/engineering/detail/${id}`,
         })
@@ -205,31 +209,45 @@
 </script>
 
 <style scoped>
+  .pd-15 {
+    padding: 0 15px;
+  }
+
+  .list_item_c {
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .list_item:hover {
+    color: rgba(0, 0, 0, 0.6);
+    background-color: #DEDEDE;
+  }
+
   .to-top {
     position: absolute;
     top: 0.2rem;
     left: 0;
-    height: 0.85rem;
-    line-height: 0.85rem;
+    height: 18px;
+    line-height: 18px;
     display: inline-block;
-    width: 1.6rem;
+    width: 33px;
     background-color: #ff0000;
     color: #fff;
     text-align: center;
-    font-size: 0.6rem;
-    border-radius: 0.15rem;
+    font-size: 12px;
+    border-radius: 3px;
   }
 
   .to-top1 {
-    line-height: 0.85rem;
+    line-height: 18px;
     display: inline-block;
-    width: 1.6rem;
+    width: 33px;
     background-color: #fff;
   }
 
-  .list_content {
-    padding: 10px 0.75rem;
-  }
+  /*.list_content {*/
+  /*padding: 10px 0;*/
+  /*}*/
 
   .title {
     font-size: 18px;
@@ -247,14 +265,9 @@
     height: 3.65rem;
   }
 
-  .border_bottom {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+  .content_bottom {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #999;
   }
- .content_bottom{
-   font-size: 12px;
-   margin-top: 10px;
-   color: #999;
- }
 </style>

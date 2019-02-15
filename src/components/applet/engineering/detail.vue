@@ -50,15 +50,17 @@
           this.content = data.content;
           this.categoryName = data.categoryName;
           this.data = data.createTime;
+
+          let visitTimes  = data.visitTimes + 1;
+          this.updata(id,visitTimes)
         });
       },
 
       updata(id, visitTimes){
-        axios.post(url.engineering.get, {
+        axios.post(url.engineering.updateStatus, {
           id: id,
           visitTimes: visitTimes
         }).then(response => {
-          console.log(response.data.data);
         })
       }
     }
@@ -91,9 +93,5 @@
   }
   .content{
     padding-top: 10px;
-  }
-  .content img{
-    width: 100%;
-    height: auto;
   }
 </style>

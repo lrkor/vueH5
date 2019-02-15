@@ -2,6 +2,18 @@
 .list .van-tab{
   color: #000!important;
 }
+
+.list .van-tabs__wrap{
+  padding: 0 15px;
+  background-color: #ffffff;
+}
+
 .list .van-tab--active{
   color: #3396fb!important;
+}
+
+/*工程圈详情样式修改/*/
+.details img{
+  width: 100%;
+  height: auto;
 }

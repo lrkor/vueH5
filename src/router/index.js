@@ -7,16 +7,22 @@ import engineeringDetail from '@/components/applet/engineering/detail'
 Vue.use(Router);
 
 export default new Router({
+  // base: '/vueH5/dist/',
+  // mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/world',
       name: 'HelloWorld',
       component: HelloWorld
     },
     {
       path: '/engineering/list',
       name: 'engineeringList',
-      component: engineeringList
+      component: engineeringList,
+      meta: {
+        pageTitle: '列表页',
+        keepAlive: true
+      }
     },
     {
       path: '/engineering/detail/:id',
