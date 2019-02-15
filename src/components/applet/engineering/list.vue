@@ -16,8 +16,9 @@
             :error.sync="error"
             error-text="请求失败，点击重新加载"
             :immediate-check="immediate"
+            :offset="20"
             @load="onLoad">
-            <div v-for="item in listContent" :key="item.index" @click="goDetail(item.id)">
+            <div v-for="(item, index) in listContent" :key="index" @click="goDetail(item.id)">
               <div class="border_bottom" v-if="item.imageList==null || item.imageList.length==0">
                 <van-row type="flex">
                   <van-col class="title">
@@ -68,7 +69,7 @@
                       <van-col style="margin-left: 10px">{{ item.createTime | formatDate }}<span style="color: #fff">是</span></van-col>
                     </van-row>
                   </van-col>
-                  <van-col span="8" style="text-align: right"><img class="img" :src="item.imageList[1]" alt="">
+                  <van-col span="8" style="text-align: right"><img class="img" :src="item.imageList[0]" alt="">
                   </van-col>
                 </van-row>
 
@@ -129,7 +130,9 @@
         this.page = 1;
         this.finished = false;
         this.loading = false;
+        this.immediate = false;
         this.listContent = [];
+        console.log(1111);
         this.queryList(id);
       },
 
@@ -158,7 +161,7 @@
             // 数据全部加载完成
             this.finished = true;
           } else {
-            this.page = this.page + 1;
+            this.page = page + 1;
           }
         })
       },
@@ -180,14 +183,13 @@
             // 数据全部加载完成
             this.finished = true;
           } else {
-            this.page = this.page + 1;
+            this.page = page + 1;
           }
         })
       },
 
       onLoad() {
         // 异步更新数据
-
         let id = this.id;
         this.queryList(id);
       },
@@ -251,7 +253,7 @@
     margin-bottom: 10px;
   }
  .content_bottom{
-   font-size: 14px;
+   font-size: 12px;
    margin-top: 10px;
    color: #999;
  }
