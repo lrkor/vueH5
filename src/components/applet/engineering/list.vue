@@ -3,7 +3,9 @@
     <van-tabs v-model="active"
               color="#3396fb"
               :line-width="75"
-              @change="navClick"
+              @change="navChange"
+              @click="navClick"
+              swipeable
               sticky>
       <van-tab v-for="item in navList" :title="item.name" :key="item.id">
         <div class="list_content">
@@ -108,6 +110,7 @@
         loading: false,
         finished: false,
         immediate: false,
+        rsh:true,
         page: 1,
         size: 10,
         id: '1'
@@ -129,7 +132,8 @@
       this.getRecommend();
     },
     methods: {
-      navClick(index) {
+      navChange(index) {
+        this.rsh = false;
         let id = this.navList[index].id;
         this.id = id;
         this.page = 1;
@@ -138,6 +142,22 @@
         this.immediate = false;
         this.listContent = [];
         this.queryList(id);
+      },
+
+      navClick(index){
+        if(this.rsh){
+          let id = this.navList[index].id;
+          this.id = id;
+          this.page = 1;
+          this.finished = false;
+          this.loading = false;
+          this.immediate = false;
+          this.listContent = [];
+          this.queryList(id);
+        }else {
+          this.rsh = true;
+        }
+
       },
 
       queryList(id) {
@@ -150,14 +170,25 @@
 
       //获取推荐列表
       getRecommend() {
-        let page = this.page;
+        let page;
         let size = this.size;
+        if(this.rsh){
+          page = 1;
+          this.page = 1;
+        }else {
+          page = this.page;
+        }
         axios.post(url.engineering.articleQuery, {
           isRecommend: '1',
           page: page,
           size: size
         }).then(response => {
-          let newListContent = [...this.listContent, ...response.data.data];
+          let newListContent;
+          if(this.rsh){
+            newListContent = response.data.data;
+          }else {
+            newListContent = [...this.listContent, ...response.data.data];
+          }
           this.listContent = newListContent;
           // 加载状态结束
           this.loading = false;
@@ -172,14 +203,25 @@
 
       // 获取其他列表
       getOtherList(id) {
-        let page = this.page;
+        let page;
         let size = this.size;
+        if(this.rsh){
+          page = 1;
+          this.page = 1;
+        }else {
+          page = this.page;
+        }
         axios.post(url.engineering.articleQuery, {
           categoryId: id,
           page: page,
           size: size
         }).then(response => {
-          let newListContent = [...this.listContent, ...response.data.data];
+          let newListContent;
+          if(this.rsh){
+            newListContent = response.data.data;
+          }else {
+            newListContent = [...this.listContent, ...response.data.data];
+          }
           this.listContent = newListContent;
           // 加载状态结束
           this.loading = false;
@@ -244,10 +286,6 @@
     width: 33px;
     background-color: #fff;
   }
-
-  /*.list_content {*/
-  /*padding: 10px 0;*/
-  /*}*/
 
   .title {
     font-size: 18px;
