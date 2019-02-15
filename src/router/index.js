@@ -11,7 +11,7 @@ export default new Router({
   // mode: 'history',
   routes: [
     {
-      path: '/world',
+      path: '/',
       name: 'HelloWorld',
       component: HelloWorld
     },
