@@ -7,8 +7,8 @@ import engineeringDetail from '@/components/applet/engineering/detail'
 Vue.use(Router);
 
 export default new Router({
-  // base: '/vueH5/dist/',
-  // mode: 'history',
+  base: '/dist/',
+  mode: 'history',
   routes: [
     {
       path: '/',

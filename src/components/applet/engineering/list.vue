@@ -4,7 +4,6 @@
               color="#3396fb"
               :line-width="75"
               @change="navChange"
-              @click="navClick"
               swipeable
               sticky>
       <van-tab v-for="item in navList" :title="item.name" :key="item.id">
@@ -15,7 +14,7 @@
             finished-text="没有更多了"
             :error.sync="error"
             error-text="请求失败，点击重新加载"
-            :immediate-check="immediate"
+            :immediate-check="false"
             :offset="20"
             @load="onLoad">
             <div class="list_item" v-for="(item, index) in listContent" :key="index" @click="goDetail(item.id)">
@@ -110,7 +109,6 @@
         loading: false,
         finished: false,
         immediate: false,
-        rsh:true,
         page: 1,
         size: 10,
         id: '1'
@@ -133,7 +131,6 @@
     },
     methods: {
       navChange(index) {
-        this.rsh = false;
         let id = this.navList[index].id;
         this.id = id;
         this.page = 1;
@@ -142,22 +139,6 @@
         this.immediate = false;
         this.listContent = [];
         this.queryList(id);
-      },
-
-      navClick(index){
-        if(this.rsh){
-          let id = this.navList[index].id;
-          this.id = id;
-          this.page = 1;
-          this.finished = false;
-          this.loading = false;
-          this.immediate = false;
-          this.listContent = [];
-          this.queryList(id);
-        }else {
-          this.rsh = true;
-        }
-
       },
 
       queryList(id) {
@@ -170,25 +151,14 @@
 
       //获取推荐列表
       getRecommend() {
-        let page;
+        let page = this.page;
         let size = this.size;
-        if(this.rsh){
-          page = 1;
-          this.page = 1;
-        }else {
-          page = this.page;
-        }
         axios.post(url.engineering.articleQuery, {
           isRecommend: '1',
           page: page,
           size: size
         }).then(response => {
-          let newListContent;
-          if(this.rsh){
-            newListContent = response.data.data;
-          }else {
-            newListContent = [...this.listContent, ...response.data.data];
-          }
+          let newListContent = [...this.listContent, ...response.data.data];
           this.listContent = newListContent;
           // 加载状态结束
           this.loading = false;
@@ -203,25 +173,14 @@
 
       // 获取其他列表
       getOtherList(id) {
-        let page;
         let size = this.size;
-        if(this.rsh){
-          page = 1;
-          this.page = 1;
-        }else {
-          page = this.page;
-        }
+        let page = this.page;
         axios.post(url.engineering.articleQuery, {
           categoryId: id,
           page: page,
           size: size
         }).then(response => {
-          let newListContent;
-          if(this.rsh){
-            newListContent = response.data.data;
-          }else {
-            newListContent = [...this.listContent, ...response.data.data];
-          }
+          let newListContent = [...this.listContent, ...response.data.data];
           this.listContent = newListContent;
           // 加载状态结束
           this.loading = false;
@@ -233,11 +192,14 @@
           }
         })
       },
-
       onLoad() {
         // 异步更新数据
         let id = this.id;
-        this.queryList(id);
+        if (this.page == 1) {
+          return;
+        } else {
+          this.queryList(id);
+        }
       },
 
       //进入详情
@@ -267,7 +229,7 @@
 
   .to-top {
     position: absolute;
-    top: 0.2rem;
+    top: 3px;
     left: 0;
     height: 18px;
     line-height: 18px;
