@@ -7,7 +7,7 @@ import engineeringDetail from '@/components/applet/engineering/detail'
 Vue.use(Router);
 
 export default new Router({
-  base: '/dist/',
+  // base: '/dist/',
   mode: 'history',
   routes: [
     {
@@ -25,7 +25,7 @@ export default new Router({
       }
     },
     {
-      path: '/engineering/detail/:id',
+      path: '/engineering/detail',
       name: 'engineeringDetail',
       component: engineeringDetail
     }

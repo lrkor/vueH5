@@ -20,17 +20,16 @@
     name: "detail",
     data() {
       return {
-        title:'',
-        content:'',
-        categoryName:'',
-        data:''
+        title: '',
+        content: '',
+        categoryName: '',
+        data: ''
       }
     },
     created() {
       //获取传入的参数
-      let param = this.$route.params;
-      let id = param.id;
-     this.get(id);
+      let id = this.$route.query.id;
+      this.get(id);
     },
     filters: {
       formatDate(time) {
@@ -38,8 +37,8 @@
         return dateFormat.formatDate(date, "yyyy-MM-dd");
       }
     },
-    methods:{
-      get(id){
+    methods: {
+      get(id) {
         axios.get(url.engineering.get, {
           params: {
             id: id
@@ -51,12 +50,12 @@
           this.categoryName = data.categoryName;
           this.data = data.createTime;
 
-          let visitTimes  = data.visitTimes + 1;
-          this.updata(id,visitTimes)
+          let visitTimes = data.visitTimes + 1;
+          this.updata(id, visitTimes)
         });
       },
 
-      updata(id, visitTimes){
+      updata(id, visitTimes) {
         axios.post(url.engineering.updateStatus, {
           id: id,
           visitTimes: visitTimes
@@ -68,9 +67,10 @@
 </script>
 
 <style scoped>
-  .details{
+  .details {
     padding: 0 0.75rem;
   }
+
   .title-brief {
     margin-top: 0.2rem;
     height: 1.2rem;
@@ -79,19 +79,23 @@
     font-size: 12px;
     color: #999;
   }
-  .pull-left{
+
+  .pull-left {
     float: left;
   }
-  .pull-right{
+
+  .pull-right {
     float: right;
   }
-  .title{
+
+  .title {
     font-size: 18px;
     color: #222;
     margin-top: 0.5rem;
-    font-weight:700;
+    font-weight: 700;
   }
-  .content{
+
+  .content {
     padding-top: 10px;
   }
 </style>

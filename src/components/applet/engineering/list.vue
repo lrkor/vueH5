@@ -195,9 +195,7 @@
       onLoad() {
         // 异步更新数据
         let id = this.id;
-        if (this.page == 1) {
-          return;
-        } else {
+        if (this.page != 1) {
           this.queryList(id);
         }
       },
@@ -205,7 +203,10 @@
       //进入详情
       goDetail(id) {
         this.$router.push({
-          path: `/engineering/detail/${id}`,
+          path: '/engineering/detail',
+          query:{
+            id:id
+          }
         })
       }
     }
