@@ -17,9 +17,11 @@
 </template>
 
 <script>
+  import store from '@/vuex/store';
   export default {
     name: "tree",
     props:['tree'],
+    store,
     data() {
       return {
         selectedArr:[],
@@ -29,12 +31,11 @@
     methods: {
       check(val,name){
         if(val){
-          this.selectedArr.push(name);
+          this.$store.commit('add',name);
         }else {
-          let index = this.selectedArr.indexOf(name);
-          this.selectedArr.splice(index,1);
+          this.$store.commit('remove',name);
         }
-      }
+      },
     }
   }
 </script>
