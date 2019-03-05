@@ -1,4 +1,5 @@
 const URL = {
+    //工程圈
     engineering:{
       articleCategoryQuery:'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/articleCategory/query',
       articleQuery:'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query',

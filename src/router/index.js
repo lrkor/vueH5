@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import engineeringList from '@/components/applet/engineering/list'
 import engineeringDetail from '@/components/applet/engineering/detail'
+// import candidates from '@/components/common/candidates'
 
 Vue.use(Router);
 
@@ -15,6 +16,8 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
+
+    //工程圈
     {
       path: '/engineering/list',
       name: 'engineeringList',
@@ -28,6 +31,13 @@ export default new Router({
       path: '/engineering/detail',
       name: 'engineeringDetail',
       component: engineeringDetail
-    }
+    },
+
+    // {
+    //   path: '/candidates',
+    //   name: 'candidates',
+    //   component: candidates
+    // },
+
   ]
 })
