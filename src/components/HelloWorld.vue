@@ -5,19 +5,20 @@
     <br>
     <br>
     <peopleList></peopleList>
-    <tree :tree="treeArr"></tree>
+    <radioTree :tree="treeArr"></radioTree>
   </div>
 </template>
 
 <script>
   import tree from "./common/tree";
   import peopleList from "./common/peopleList";
+  import radioTree from "./common/radioTree";
   import {mapState} from 'vuex';
   import store from '@/vuex/store';
 
   export default {
     name: 'HelloWorld',
-    components: {tree, peopleList},
+    components: {tree, peopleList,radioTree},
     store,
     data() {
       return {
@@ -28,7 +29,7 @@
             name: '分组1',
             list: [
               {
-                id: '1',
+                id: 41234123,
                 name: '子分组1',
                 peopleList: [
                   {
@@ -51,42 +52,42 @@
             ],
           },
           {
-            id: 2,
+            id: 12314,
             name: '分组2',
             peopleList: [
               {
-                id: '4',
+                id: 45645,
                 name: 'q',
                 checked: false
               },
               {
-                id: '5',
+                id: 879,
                 name: 'w',
                 checked: false
               },
               {
-                id: '6',
+                id: 234,
                 name: 'e',
                 checked: false
               },
             ],
           },
           {
-            id: 3,
+            id: 2626,
             name: '分组3',
             peopleList: [
               {
-                id: '7',
+                id: 37457,
                 name: '1',
                 checked: false
               },
               {
-                id: '8',
+                id: 65798798,
                 name: '2',
                 checked: false
               },
               {
-                id: '9',
+                id: 1234,
                 name: '3',
                 checked: false
               },

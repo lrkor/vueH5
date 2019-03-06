@@ -4,6 +4,9 @@ import HelloWorld from '@/components/HelloWorld'
 import engineeringList from '@/components/applet/engineering/list'
 import engineeringDetail from '@/components/applet/engineering/detail'
 
+
+import signature from '@/components/applet/demo/signature'
+
 Vue.use(Router);
 
 const router = new Router({
@@ -39,6 +42,16 @@ const router = new Router({
       component: engineeringDetail,
       meta: {
         title: '工程圈'
+      }
+    },
+
+  //  签字
+    {
+      path: '/signature',
+      name: 'signature',
+      component: signature,
+      meta: {
+        title: '签字'
       }
     },
   ]

@@ -15,7 +15,7 @@
 
 <script>
   import store from '@/vuex/store';
-  import {mapState, mapMutations} from 'vuex';
+  import {mapState} from 'vuex';
 
   export default {
     name: "peopleList",

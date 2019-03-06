@@ -26,10 +26,16 @@ import {
   Collapse,
   CollapseItem,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  RadioGroup,
+  Radio
 } from 'vant'
 
-Vue.use(Cell).use(CellGroup).use(Tabbar).use(TabbarItem).use(Stepper).use(PullRefresh).use(Tab).use(Tabs).use(Field).use(NavBar).use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List).use(Collapse).use(CollapseItem).use(Checkbox).use(CheckboxGroup);
+Vue.use(Cell).use(CellGroup).use(Tabbar).use(TabbarItem)
+  .use(Stepper).use(PullRefresh).use(Tab).use(Tabs).use(Field)
+  .use(NavBar).use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem)
+  .use(Lazyload).use(List).use(Collapse).use(CollapseItem).use(Checkbox)
+  .use(CheckboxGroup).use(RadioGroup).use(Radio);
 
 Vue.config.productionTip = false;
 
