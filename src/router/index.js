@@ -6,8 +6,7 @@ import engineeringDetail from '@/components/applet/engineering/detail'
 
 Vue.use(Router);
 
-export default new Router({
-  // base: '/dist/',
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -23,13 +22,37 @@ export default new Router({
       component: engineeringList,
       meta: {
         pageTitle: '列表页',
-        keepAlive: true
+        keepAlive: true,
+        title: '工程圈'
+      },
+      beforeEach: (to, from, next) => {
+        /* 路由发生变化修改页面title */
+        if (to.meta.title) {
+          document.title = to.meta.title;
+        }
+        next();
       }
     },
     {
       path: '/engineering/detail',
       name: 'engineeringDetail',
-      component: engineeringDetail
+      component: engineeringDetail,
+      meta: {
+        title: '工程圈'
+      }
     },
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {//如果设置标题，拦截后设置标题
+    document.title = to.meta.title
+  }
+  next();
+});
+
+export default router;
+
+
+
+

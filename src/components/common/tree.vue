@@ -49,7 +49,7 @@
 
 <style scoped>
   .checkboxGroup{
-    padding-bottom: 10px;
     font-size: 18px;
+    border-top: 1px solid #ebedf0;
   }
 </style>

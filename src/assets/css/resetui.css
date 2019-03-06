@@ -30,13 +30,14 @@
 }
 .tree .van-checkbox{
   display: flex;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 .tree .van-checkbox-group .van-checkbox__label{
   font-size: 18px;
 }
-.tree .van-cell:not(:last-child)::after{
-  /*border-bottom: 1px solid #ebedf0;*/
-  border-bottom: none;
+.tree .van-collapse-item__title--expanded::after{
+  visibility: hidden;
 }
+
+
 
