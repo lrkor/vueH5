@@ -17,7 +17,7 @@
 
   export default {
     name: 'HelloWorld',
-    components: {tree,peopleList},
+    components: {tree, peopleList},
     store,
     data() {
       return {
@@ -95,14 +95,18 @@
         ],
       }
     },
-    computed: {
-      ...mapState(['peopleList','tree']),
+    created: function () {
+      this.$store.commit('assignment', this.treeArr);
     },
-    methods: {}
+    computed: {
+      ...mapState(['peopleList', 'tree']),
+    },
+    methods: {
+
+    }
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   h1, h2 {
     font-weight: normal;

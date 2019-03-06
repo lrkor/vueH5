@@ -4,82 +4,11 @@ Vue.use(Vuex);
 
 const state={
   peopleList:[],
-  tree: [
-    {
-      id: 1,
-      name: '分组1',
-      list: [
-        {
-          id: '1',
-          name: '子分组1',
-          peopleList: [
-            {
-              id: 11111,
-              name: '刘刘刘刘',
-              checked: false,
-            },
-            {
-              id: 33333,
-              name: 'e',
-              checked: false,
-            },
-            {
-              id: 44444,
-              name: 'w',
-              checked: false,
-            }
-          ],
-        }
-      ],
-    },
-    {
-      id: 2,
-      name: '分组2',
-      peopleList: [
-        {
-          id: '4',
-          name: 'q',
-          checked: false
-        },
-        {
-          id: '5',
-          name: 'w',
-          checked: false
-        },
-        {
-          id: '6',
-          name: 'e',
-          checked: false
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: '分组3',
-      peopleList: [
-        {
-          id: '7',
-          name: '1',
-          checked: false
-        },
-        {
-          id: '8',
-          name: '2',
-          checked: false
-        },
-        {
-          id: '9',
-          name: '3',
-          checked: false
-        },
-      ],
-    }
-  ],
+  tree: [],
 };
 
 const mutations={
   assignment(state,data){
-    console.log(11);
     state.tree = data;
   },
 

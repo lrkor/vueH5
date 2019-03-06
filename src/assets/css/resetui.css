@@ -35,3 +35,8 @@
 .tree .van-checkbox-group .van-checkbox__label{
   font-size: 18px;
 }
+.tree .van-cell:not(:last-child)::after{
+  /*border-bottom: 1px solid #ebedf0;*/
+  border-bottom: none;
+}
+

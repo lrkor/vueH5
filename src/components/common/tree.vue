@@ -27,18 +27,12 @@
         selectedArr:[],
         activeNames: ['0'],
         result:[],
-        isInitialize:true,
       }
     },
     computed:{
     },
     methods: {
       check(val,name,id){
-        if(this.isInitialize){
-          this.$store.commit('assignment',this.tree);
-          this.isInitialize = false;
-        }
-
         let data = {
           id:id,
           name:name
