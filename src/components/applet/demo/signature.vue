@@ -32,6 +32,7 @@
         cxt.fillRect(0, 0, canvas.width, canvas.height); //绘制“已填色”的矩形
         cxt.strokeStyle = this.color; //笔触的颜色
         cxt.lineCap = "round"; //线条末端线帽的样式
+        // cxt.font="30px 宋体";
         let lineWidth = this.lineWidth;
         //开始绘制
         canvas.addEventListener(
