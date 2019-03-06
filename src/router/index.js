@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import engineeringList from '@/components/applet/engineering/list'
 import engineeringDetail from '@/components/applet/engineering/detail'
-// import candidates from '@/components/common/candidates'
 
 Vue.use(Router);
 
@@ -32,12 +31,5 @@ export default new Router({
       name: 'engineeringDetail',
       component: engineeringDetail
     },
-
-    // {
-    //   path: '/candidates',
-    //   name: 'candidates',
-    //   component: candidates
-    // },
-
   ]
 })
