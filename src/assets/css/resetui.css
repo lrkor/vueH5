@@ -1,19 +1,37 @@
 /*工程圈列表vant样式修改/*/
-.list .van-tab{
-  color: #000!important;
+.list .van-tab {
+  color: #000 !important;
 }
 
-.list .van-tabs__wrap{
+.list .van-tabs__wrap {
   padding: 0 15px;
   background-color: #ffffff;
 }
 
-.list .van-tab--active{
-  color: #3396fb!important;
+.list .van-tab--active {
+  color: #3396fb !important;
 }
 
 /*工程圈详情样式修改/*/
-.details img{
+.details img {
   width: 100%;
   height: auto;
+}
+
+
+/*选人组件样式调整*/
+.tree .van-collapse-item__content {
+  padding: 0 0 0 15px;
+}
+
+.tree .van-checkbox-group{
+  font-size: 20px;
+  color: #666666;
+}
+.tree .van-checkbox{
+  display: flex;
+  margin-top: 10px;
+}
+.tree .van-checkbox-group .van-checkbox__label{
+  font-size: 18px;
 }

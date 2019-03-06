@@ -5,9 +5,9 @@
         <div v-if="item.list">
           <tree :tree="item.list"></tree>
         </div>
-        <div v-else>
+        <div v-else class="checkboxGroup">
           <div v-for="(item1 ,index1) in item.peopleList" :key="index1">
-            <van-checkbox v-model="item1.checked" @change="check(item1.checked,item1.name)">{{item1.name}}</van-checkbox>
+            <van-checkbox v-model="item1.checked" @change="check(item1.checked,item1.name,item1.id)">{{item1.name}}</van-checkbox>
           </div>
         </div>
       </van-collapse-item>
@@ -26,14 +26,22 @@
       return {
         selectedArr:[],
         activeNames: ['0'],
+        result:[]
       }
     },
+    computed:{
+
+    },
     methods: {
-      check(val,name){
+      check(val,name,id){
+        let data = {
+          id:id,
+          name:name
+        };
         if(val){
-          this.$store.commit('add',name);
+          this.$store.commit('add',data);
         }else {
-          this.$store.commit('remove',name);
+          this.$store.commit('remove',data);
         }
       },
     }
@@ -41,5 +49,8 @@
 </script>
 
 <style scoped>
-
+  .checkboxGroup{
+    padding-bottom: 10px;
+    font-size: 18px;
+  }
 </style>
