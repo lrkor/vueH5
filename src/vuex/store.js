@@ -78,6 +78,11 @@ const state={
 };
 
 const mutations={
+  assignment(state,data){
+    console.log(11);
+    state.tree = data;
+  },
+
   add(state,data){
     state.peopleList.push(data);
   },
