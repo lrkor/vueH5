@@ -5,14 +5,14 @@
     <br>
     <br>
     <peopleList></peopleList>
-    <radioTree :tree="treeArr"></radioTree>
+    <tree :tree="treeArr"></tree>
   </div>
 </template>
 
 <script>
   import tree from "./common/tree";
   import peopleList from "./common/peopleList";
-  import radioTree from "./common/radioTree";
+  import radioTree from "./common/tree";
   import {mapState} from 'vuex';
   import store from '@/vuex/store';
 
