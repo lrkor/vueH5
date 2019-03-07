@@ -10,6 +10,7 @@
 
   let canvas = document.createElement("canvas");
   let cxt = canvas.getContext("2d");
+  import wx from 'weixin-js-sdk';
   export default {
     name: "signature",
     data() {
@@ -26,14 +27,24 @@
       getCanvas() {
         let el = document.getElementById("canvas");
         el.appendChild(canvas);
+        let width = el.clientWidth;
+        let height = el.clientHeight;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
         canvas.width = el.clientWidth;
         canvas.height = el.clientHeight;
         cxt.fillStyle = this.background; //填充绘图的背景颜色
         cxt.fillRect(0, 0, canvas.width, canvas.height); //绘制“已填色”的矩形
         cxt.strokeStyle = this.color; //笔触的颜色
-        cxt.lineCap = "round"; //线条末端线帽的样式
-        // cxt.font="30px 宋体";
         let lineWidth = this.lineWidth;
+        if(window.devicePixelRatio){
+          canvas.height = height * window.devicePixelRatio;
+          canvas.width = width * window.devicePixelRatio;
+          lineWidth = this.lineWidth * window.devicePixelRatio;
+          cxt.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+        cxt.lineCap = "round"; //线条末端线帽的样式
+
         //开始绘制
         canvas.addEventListener(
           "touchstart",
@@ -156,7 +167,6 @@
     width: 100%;
     height: 500px;
     position: relative;
-    /*border: 1px solid #000;*/
   }
 
   #canvas canvas {
