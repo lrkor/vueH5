@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
+    <nav-bar :title="title"></nav-bar>
     <router-link to="/engineering/list">工程圈列表</router-link>
+    <router-link to="/patrol/section/list">巡查</router-link>
     <br>
     <br>
     <br>
@@ -11,17 +13,18 @@
 
 <script>
   import tree from "./common/tree";
+  import navBar from "./common/navBar";
   import peopleList from "./common/peopleList";
-  import radioTree from "./common/tree";
   import {mapState} from 'vuex';
   import store from '@/vuex/store';
 
   export default {
     name: 'HelloWorld',
-    components: {tree, peopleList,radioTree},
+    components: {tree, peopleList,navBar},
     store,
     data() {
       return {
+        title:'222',
         msg: 'Welcome to Your Vue.js App',
         treeArr: [
           {

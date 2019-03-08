@@ -7,6 +7,7 @@ import engineeringList from '@/components/applet/engineering/list'
 import engineeringDetail from '@/components/applet/engineering/detail'
 
 //巡查
+import patrolIndex from '@/components/applet/patrol/index'
 import PCAdd from '@/components/applet/patrol/checkAdd'
 import PCDetail from '@/components/applet/patrol/checkDetail'
 import PCList from '@/components/applet/patrol/checkList'
@@ -55,38 +56,42 @@ const router = new Router({
     },
 
   //  巡查
-    {
-      path: '/patrol/check/add',
-      name: 'PCAdd',
-      component: PCAdd,
-    },
-    {
-      path: '/patrol/check/detail',
-      name: 'PCDetail',
-      component: PCDetail,
-    },
-    {
-      path: '/patrol/check/list',
-      name: 'PCList',
-      component: PCList,
-    },
-    {
-      path: '/patrol/rectification/add',
-      name: 'PRAdd',
-      component: PRAdd,
-    },
-    {
-      path: '/patrol/rectification/add',
-      name: 'PRDetail',
-      component: PRDetail,
-    },
-    {
-      path: '/patrol/section/list',
-      name: 'PSList',
-      component: PSList,
-    },
 
-
+    {
+      path: '/patrol', name: 'patrolIndex', component: patrolIndex,
+      children:[
+        {
+          path: 'check/add',
+          name: 'PCAdd',
+          component: PCAdd,
+        },
+        {
+          path: 'check/detail',
+          name: 'PCDetail',
+          component: PCDetail,
+        },
+        {
+          path: 'check/list',
+          name: 'PCList',
+          component: PCList,
+        },
+        {
+          path: 'rectification/add',
+          name: 'PRAdd',
+          component: PRAdd,
+        },
+        {
+          path: 'rectification/add',
+          name: 'PRDetail',
+          component: PRDetail,
+        },
+        {
+          path: 'section/list',
+          name: 'PSList',
+          component: PSList,
+        },
+      ]
+    },
   //  签字
     {
       path: '/signature',

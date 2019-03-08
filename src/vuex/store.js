@@ -5,6 +5,7 @@ Vue.use(Vuex);
 const state={
   peopleList:[],
   tree: [],
+  patrolTitle:'标题'
 };
 
 const mutations={
