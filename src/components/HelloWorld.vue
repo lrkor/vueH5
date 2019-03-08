@@ -103,7 +103,9 @@
       ...mapState(['peopleList', 'tree']),
     },
     methods: {
-
+      onRead(file) {
+        console.log(file)
+      }
     }
   }
 </script>
