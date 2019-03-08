@@ -1,9 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+
+//工程圈
 import engineeringList from '@/components/applet/engineering/list'
 import engineeringDetail from '@/components/applet/engineering/detail'
 
+//巡查
+import PCAdd from '@/components/applet/patrol/checkAdd'
+import PCDetail from '@/components/applet/patrol/checkDetail'
+import PCList from '@/components/applet/patrol/checkList'
+import PRAdd from '@/components/applet/patrol/rectificationAdd'
+import PRDetail from '@/components/applet/patrol/rectificationDetail'
+import PSList from '@/components/applet/patrol/sectionList'
 
 import signature from '@/components/applet/demo/signature'
 
@@ -44,6 +53,39 @@ const router = new Router({
         title: '工程圈'
       }
     },
+
+  //  巡查
+    {
+      path: '/patrol/check/add',
+      name: 'PCAdd',
+      component: PCAdd,
+    },
+    {
+      path: '/patrol/check/detail',
+      name: 'PCDetail',
+      component: PCDetail,
+    },
+    {
+      path: '/patrol/check/list',
+      name: 'PCList',
+      component: PCList,
+    },
+    {
+      path: '/patrol/rectification/add',
+      name: 'PRAdd',
+      component: PRAdd,
+    },
+    {
+      path: '/patrol/rectification/add',
+      name: 'PRDetail',
+      component: PRDetail,
+    },
+    {
+      path: '/patrol/section/list',
+      name: 'PSList',
+      component: PSList,
+    },
+
 
   //  签字
     {
