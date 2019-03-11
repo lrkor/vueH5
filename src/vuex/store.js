@@ -16,6 +16,7 @@ const mutations={
   add(state,data){
     state.peopleList.push(data);
   },
+
   remove(state,data){
     let peopleList = state.peopleList;
     let tree = state.tree;
@@ -28,6 +29,10 @@ const mutations={
       recursiveTree(tree,data.id);
     }
   },
+
+  changeTitle(state,data){
+    state.patrolTitle = data;
+  }
 };
 
 //递归树

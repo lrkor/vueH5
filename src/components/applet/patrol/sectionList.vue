@@ -8,8 +8,10 @@
 </template>
 
 <script>
+  import store from '@/vuex/store';
   export default {
     name: "sectionList",
+    store,
     data() {
       return {
         list:[
